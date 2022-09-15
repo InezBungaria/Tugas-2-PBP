@@ -3,11 +3,12 @@ https://tugas-2-pbp-inez.herokuapp.com/katalog/
 
 
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html;
-
+Jawab :![tugas 2 pbp](https://user-images.githubusercontent.com/112611192/190313674-727cc450-b0c4-4bca-b1c1-b0a4cc0ad4f3.jpg)
 
 Jelaskan kenapa menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 Jawab : 
 virtual environment (lingkungan virtual) berfungsi untuk memisahkan pengaturan dan package yang diinstal pada setiap proyek Django sehingga perubahan yang dilakukan pada satu proyek tidak mempengaruhi proyek lainnya. Dengan kata lain, setiap proyek Django sebaiknya memiliki virtualenv-nya sendiri
+
 
 Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas.
 Jawab :
