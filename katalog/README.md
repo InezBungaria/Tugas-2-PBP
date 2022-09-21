@@ -18,3 +18,30 @@ Jawab :
 3. Memetakan data yang didapatkan ke dalam HTML dengan sintaks dari Django untuk pemetaan data template.
 
 4. Melakukan deployment ke Heroku terhadap aplikasi yang sudah kamu buat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
+
+ Pada file views.py di folder katalog membuat fungsi yang menerima parameter request dan mengembalikan render :  def show_katalog(request):
+                                return render(request, "katalog.html", context).
+
+    Pada folder katalog terdapat folder templates yang di dalamnya terdapat file katalog.html beserta isinya. Pada template isi tersebut terdapat code   <h5>Name: </h5> dan <h5>Student ID: </h5> diubah menjadi <h5>Name: </h5> dan <h5>Student ID: </h5>
+                    <p>Fill me!</p>     <p>Fill me!</p>                      <p>{{nama}}</p>     <p>{{NPM}}</p>
+    Selain itu juga menambahkan {% for katalog in list_katalog_barang %}
+                                    <tr>
+                                        <th>{{katalog.item_name}}</th>
+                                        <th>{{katalog.item_price}}</th>
+                                        <th>{{katalog.item_stock}}</th>
+                                        <th>{{katalog.rating}}</th>
+                                        <th>{{katalog.description}}</th>
+                                        <th>{{katalog.item_url}}</th>
+                                    </tr>
+                                {% endfor %}
+                                </table>.
+
+    Pada folder katalog dengan file urls.py ditambahkan code from django.urls import path
+                                                            from katalog.views import show_katalog
+                                                            app_name = 'katalog'
+                                                            urlpatterns = [
+                                                                path('', show_katalog, name='show_katalog'),
+                                                            ]
+    yang berguna untuk melakukan routing terhadap fungsi views.py sehingga halaman HTML dapat dapat ditampilkan pada browser.
+
+    Pada folder project_django terdapat file urls.py dimana ditambahkan code path('katalog/', include('katalog.urls')),

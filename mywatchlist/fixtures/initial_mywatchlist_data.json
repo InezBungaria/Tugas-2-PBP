@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":1,
+        "fields":{
+            "watched" : true,
+            "title" : "The Handmaiden",
+            "rating" : 5,
+            "release_date" : "1 Juni 2016",
+            "review" : "bagus"
+        }
+},
+{
+        "model":"mywatchlist.watchlist",
+        "pk":2,
+        "fields":{
+            "watched" : true,
+            "title" : "The Call",
+            "rating" : 5,
+            "release_date" : "2 Oktober 2020",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":3,
+        "fields":{
+            "watched" : true,
+            "title" : "Peninsula",
+            "rating" : 5,
+            "release_date" : "16 Oktober 2020",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":4,
+        "fields":{
+            "watched" : true,
+            "title" : "Cruella",
+            "rating" : 5,
+            "release_date" : "26 Mei 2021",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":5,
+        "fields":{
+            "watched" : true,
+            "title" : "Pengabdi Setan 2",
+            "rating" : 5,
+            "release_date" : "4 Agustus 2022",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":6,
+        "fields":{
+            "watched" : true,
+            "title" : "Doctor Strange in the Multiverse of Madness",
+            "rating" : 5,
+            "release_date" : "5 Mei 2022",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":7,
+        "fields":{
+            "watched" : true,
+            "title" : "500 Days of Summer",
+            "rating" : 5,
+            "release_date" : "17 Juli 2009",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":8,
+        "fields":{
+            "watched" : true,
+            "title" : "Morbius",
+            "rating" : 5,
+            "release_date" : "30 Maret 2022",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":9,
+        "fields":{
+            "watched" : true,
+            "title" : "Searching",
+            "rating" : 5,
+            "release_date" : "24 Agustus 2018",
+            "review" : "bagus"
+        }
+    },
+    {
+        "model":"mywatchlist.watchlist",
+        "pk":10,
+        "fields":{
+            "watched" : true,
+            "title" : "Frozen",
+            "rating" : 5,
+            "release_date" : "29 November 2013",
+            "review" : "bagus"
+        }
+    }
+]

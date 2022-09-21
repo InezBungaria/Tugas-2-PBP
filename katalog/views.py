@@ -9,4 +9,4 @@ def show_catalog(request):
         "nama" : "Inez Bungaria Octaviana Pardede",
         "npm" : "2106751833"
     }
-    return render(request, 'katalog.html', context)
+    return render(request, 'katalog.html', context) 
