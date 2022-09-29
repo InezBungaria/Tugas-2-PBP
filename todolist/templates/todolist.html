@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Tugas 4 PBP</h1>
+
+<h5>Nama: </h5>
+<p>{{nama}}</p>
+
+<h5>Student ID: </h5>
+<p>{{npm}}</p>
+
+<h2>{{message}}</h2>
+
+<h1>To Do List</h1> 
+
+<table border="1">
+    <tr>
+    <th colspan ="3">Date</th>
+    <th colspan ="3">Title</th>
+    <th colspan ="3">Description</th>
+    <th colspan ="3">User</th>
+    <th colspan ="3">Status</th>
+    <th colspan ="3">Change Status</th>
+    <th colspan ="3">Delete</th>
+    </tr>
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+    {% for task in list_task %}
+    <tr>
+        <td colspan ="3">{{task.date}}</td>
+        <td colspan ="3">{{task.title}}</td>
+        <td colspan ="3">{{task.description}}</td>
+        <td colspan ="3">{{task.user}}</td>
+        <td colspan ="3">
+            {% if task.is_finished %}
+                Completed
+                {% else %}
+                Not Completed
+                {% endif %}
+        </td>
+        <td colspan ="3">
+            <button><a href="delete/{{task.id}}>Delete</a></button>
+            <button><a href="status/{{task.id}}>Change</a></button>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock content %}
