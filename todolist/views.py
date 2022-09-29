@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from todolist.form import TaskForm
+from todolist.forms import TaskForm
 
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
@@ -20,7 +20,7 @@ def show_todolist(request):
     'list_task': data_task,
     'currently_user' : request.user,
     "nama" : "Inez Bungaria Octaviana Pardede",
-    "npm" : "2106751833"
+    "npm" : "2106751833",
     }
     return render(request, "todolist.html", context)
 
@@ -82,19 +82,18 @@ def create_task(request):
         }
     return render(request, "create_todolist.html", context)
 
-def task_status(request, update_task):
-    data_update = Task.objects.get(id=update_task)
+# def task_status(request, update_task):
+#     data_update = Task.objects.get(id=update_task)
 
-    if data_update.is_finished:
-        data_update.is_finished = False
-    else:
-        data_update.is_finished = True
+#     if data_update.is_finished:
+#         data_update.is_finished = False
+#     else:
+#         data_update.is_finished = True
 
-    data_update.save() 
-    return HttpResponseRedirect(reverse('todolist:show_todolist'))
+#     data_update.save() 
+#     return HttpResponseRedirect(reverse('todolist:show_todolist'))
 
-def delete_task(request, update_task):
-    data_update = Task.objects.get(id=update_task)
-    if data_update == request.user:
-        data_update.delete()
-    return redirect('todolist:show_todolist')
+# def delete_task(request, update_task):
+#     data_update = Task.objects.get(id=update_task)
+#     data_update.delete()
+#     return HttpResponseRedirect(reverse('todolist:show_todolist'))
