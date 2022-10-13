@@ -1,6 +1,8 @@
+from turtle import title
+from unittest import result
 from django.shortcuts import render
 from todolist.models import Task
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseNotFound
 from django.core import serializers
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -19,8 +21,6 @@ def show_todolist(request):
     context = {
     'list_task': data_task,
     'currently_user' : request.user,
-    "nama" : "Inez Bungaria Octaviana Pardede",
-    "npm" : "2106751833",
     }
     return render(request, "todolist.html", context)
 
@@ -61,7 +61,7 @@ def logout_user(request):
 
 def create_task(request):
     form_todolist=TaskForm()
-    #instance = Task.objects.filter(user=request.user).first()
+    instance = Task.objects.filter(user=request.user).first()
     if request.method == 'POST':
         form_todolist = TaskForm(request.POST or None, request.FILES or None)
         print(form_todolist)
@@ -70,7 +70,7 @@ def create_task(request):
             task.user=request.user
             task.save()
             print(request.user)
-            #form_todolist.save()
+            form_todolist.save()
             messages.success(request, (f"Task berhasil dibuat"))
             return redirect('todolist:list_task')
         else:
@@ -82,18 +82,48 @@ def create_task(request):
         }
     return render(request, "create_todolist.html", context)
 
-# def task_status(request, update_task):
-#     data_update = Task.objects.get(id=update_task)
+@login_required(login_url='/todolist/login/')
+def task_status(request, update_task):
+    data_update = Task.objects.get(id=update_task)
 
-#     if data_update.is_finished:
-#         data_update.is_finished = False
-#     else:
-#         data_update.is_finished = True
+    if data_update.is_finished:
+        data_update.is_finished = False
+    else:
+        data_update.is_finished = True
 
-#     data_update.save() 
-#     return HttpResponseRedirect(reverse('todolist:show_todolist'))
+    data_update.save() 
+    return HttpResponseRedirect(reverse('todolist:show_todolist'))
 
-# def delete_task(request, update_task):
-#     data_update = Task.objects.get(id=update_task)
-#     data_update.delete()
-#     return HttpResponseRedirect(reverse('todolist:show_todolist'))
+@login_required(login_url='/todolist/login/')
+def delete_task(request, id):
+    data = Task.objects.get(id=id) 
+    data.delete()
+    return HttpResponseRedirect(reverse('todolist:show_todolist'))
+    
+@login_required(login_url='/todolist/login')
+def todolist_json(request):
+    data_task = Task.objects.all().filter(usernames=request.user)
+    return HttpResponse(serializers.serialize('json, data_task'))
+
+@login_required(login_url='/todolist/login')
+def todolist_ajax(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+
+        task = Task.objects.create(title=title, description=description, date=datetime.date.today(), username=request)
+        task.save()
+        result = {
+            'fields':{
+                'title': task.title,
+                'description': task.description,
+                'date': task.date,
+            },
+            'pk': task.pk
+        }
+
+        return HttpResponse(b"CREATED", status=200)
+    
+    return HttpResponseNotFound()
+
+

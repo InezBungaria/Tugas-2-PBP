@@ -2,17 +2,57 @@
 
 {% block meta %}
 <title>Login</title>
+
+
 {% endblock meta %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <style>
+            
+            body{
+                background: rgb(221,188,201);
+                background: radial-gradient(circle, rgba(221,188,201,1) 0%, rgba(148,187,233,1) 100%);
+            }
 
-<div class = "login">
+            ul {
+              list-style-type: none;
+              margin: 0;
+              padding: 14px 16px;
+              background-color: #f0dfe6;
+              text-align: center;             
+            }
+            
+            li {
+              display: inline;          
+            }
 
-    <h1>Login</h1>
+            li a{
+                text-decoration: none;
+            }
+
+            </style>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <span class="navbar-brand" href="#">{{nama}}</span>
+            <a style="font-size: 30px; font-family: 'Gill Sans';"><span style='font-size:25px;'>&#128075;&#127995;</span> Welcome<span style='font-size:25px;'>&#128075;&#127995;</span></a>
+          </li>
+        </ul>
+    </div>
+</nav>
+
+<div style="text-align: center" class = "login">
+
+    <h1 style="text-align: center;">Login</h1>
 
     <form method="POST" action="">
         {% csrf_token %}
-        <table>
+        <table table align="center">
             <tr>
                 <td>Username: </td>
                 <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
@@ -25,7 +65,7 @@
 
             <tr>
                 <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
+                <td><input style="background-color: #cf9fca; padding: 5px 20px;"class="btn login_btn" type="submit" value="Login"></td>
             </tr>
         </table>
     </form>
@@ -38,7 +78,7 @@
         </ul>
     {% endif %}     
         
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
+    Belum mempunyai akun? <button style="background-color: #cf9fca; padding: 5px 20px;"><a style= "text-decoration: none;" href="{% url 'todolist:register' %}">Buat Akun</a></button>
 
 </div>
 
