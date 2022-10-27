@@ -7,6 +7,27 @@
 {% endblock meta %}
 
 {% block content %}
+<script>
+    $(document).ready(function(){
+        $('#button-login').click(function(){
+            alert('hello');
+            $.ajax({
+                url: "",
+                type: 'POST',
+                data: {
+                    'csrfmiddlewaretoken': '{{csrf_token}}',
+                    'username': $('#input_username').val(),
+                    'password': $('#input_password').val()
+                },
+                success: function(data){
+                    alert('hello world');
+                }
+            });
+        });
+    });
+</script>
+
+
 <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
       <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,22 +71,22 @@
 
     <h1 style="text-align: center;">Login</h1>
 
-    <form method="POST" action="">
+    <form>
         {% csrf_token %}
         <table table align="center">
             <tr>
                 <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control" id = 'input_username'></td>
             </tr>
                     
             <tr>
                 <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control" id = 'input_password'></td>
             </tr>
 
             <tr>
                 <td></td>
-                <td><input style="background-color: #cf9fca; padding: 5px 20px;"class="btn login_btn" type="submit" value="Login"></td>
+                <td><button id = 'button-login'>Login</button></td>
             </tr>
         </table>
     </form>
