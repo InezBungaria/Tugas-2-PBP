@@ -1,5 +1,3 @@
-from turtle import title
-from unittest import result
 from django.shortcuts import render
 from todolist.models import Task
 from django.http import HttpResponse,HttpResponseNotFound
